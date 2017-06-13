@@ -15,7 +15,8 @@ export default class Component1 extends Component {
     console.log("my props.",this.props)
     return(
       <View>
-        <Text style={styles.myView}>{this.state.message} </Text>
+        <Text style={styles.myView}>{this.state.message}deded</Text>
+
         <View style={styles.container}>
           <View style={styles.box}>
             <Text>View 1</Text>
@@ -24,6 +25,7 @@ export default class Component1 extends Component {
             <Text>View 2</Text>
           </View>
         </View>
+
         <View style={styles.inputBoxes}>
           <View style={styles.inputBox}>
             <TextInput placeholder="write your name here" />
@@ -31,6 +33,7 @@ export default class Component1 extends Component {
           <View style={styles.inputBox}>
             <TextInput placeholder="write your last name here" />
           </View>
+            
         </View>
           
       </View>
@@ -44,8 +47,8 @@ const styles= StyleSheet.create({
   container:{ display:"flex",height:100,flexDirection:"row" },
   box:{ backgroundColor:"green",flex:1,alignItems:"center", justifyContent:"center" },
   box2:{ backgroundColor:"yellow",flex:1,alignItems:"center", justifyContent:"center" },
-  inputBoxes:{ width:360,alignItems:"center",justifyContent:"center"},
-  inputBox:{ width:300 }
+  inputBoxes:{ flexDirection:"column"},
+  inputBox:{ marginLeft:40,marginRight:40,marginTop:10 }
   
 })
 
