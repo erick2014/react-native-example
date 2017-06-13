@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {AppRegistry,Text,View,StyleSheet} from 'react-native';
+import {AppRegistry,Text,View,StyleSheet,TextInput } from 'react-native';
 
 export default class Component1 extends Component {
   constructor(props){
@@ -24,6 +24,15 @@ export default class Component1 extends Component {
             <Text>View 2</Text>
           </View>
         </View>
+        <View style={styles.inputBoxes}>
+          <View style={styles.inputBox}>
+            <TextInput placeholder="write your name here" />
+          </View>
+          <View style={styles.inputBox}>
+            <TextInput placeholder="write your last name here" />
+          </View>
+        </View>
+          
       </View>
     );
   }
@@ -34,7 +43,9 @@ const styles= StyleSheet.create({
   myText:{ "color":"white" },
   container:{ display:"flex",height:100,flexDirection:"row" },
   box:{ backgroundColor:"green",flex:1,alignItems:"center", justifyContent:"center" },
-  box2:{ backgroundColor:"yellow",flex:1,alignItems:"center", justifyContent:"center" }
+  box2:{ backgroundColor:"yellow",flex:1,alignItems:"center", justifyContent:"center" },
+  inputBoxes:{ width:360,alignItems:"center",justifyContent:"center"},
+  inputBox:{ width:300 }
   
 })
 
