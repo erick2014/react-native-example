@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import {AppRegistry,Text,View,StyleSheet,TextInput } from 'react-native';
 
+import Component2 from '../Component2/Component2';
+
+const users=[
+  { name:"John Doe" },
+  { name:"Brad Traversy" },
+  { name:"Steve Smith" },
+  { name:"Janet William" }
+]
+
 export default class Component1 extends Component {
   constructor(props){
     super(props);
@@ -12,7 +21,6 @@ export default class Component1 extends Component {
   }
   render(){
     let name= this.state.showName ? this.state.name: 'No name';
-    console.log("my props.",this.props)
     return(
       <View>
         <Text style={styles.myView}>{this.state.message}deded</Text>
@@ -33,7 +41,10 @@ export default class Component1 extends Component {
           <View style={styles.inputBox}>
             <TextInput placeholder="write your last name here" />
           </View>
-            
+        </View>
+
+        <View style={styles.inputBox}>
+          <Component2 />
         </View>
           
       </View>
