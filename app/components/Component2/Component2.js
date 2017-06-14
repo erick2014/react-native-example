@@ -29,16 +29,19 @@ export default class Component2 extends Component {
 
   render(){
     return(
-      <ListView
-        dataSource={this.state.dataSource}
-        renderRow={ (rowData)=> this.renderMyRow( rowData )  }
-      />
+      <View>
+        <Text style={styles.boxSpaces}>Users List :</Text>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={ (rowData)=> this.renderMyRow( rowData )  }
+        />
+      </View>
     );
   }
 }
 
 const styles= StyleSheet.create({
-  
+  boxSpaces:{ marginTop:10,marginBottom:10 }
 })
 
 AppRegistry.registerComponent('Component2', () => Component2);
