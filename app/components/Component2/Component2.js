@@ -34,7 +34,6 @@ export default class Component2 extends Component {
       .then( (resp)=>{
         
         if( resp instanceof Array && resp.length>0  ){
-          console.log("here...?",resp)
           let newData=this.ds.cloneWithRows(resp)
           this.setState({ dataSource: newData })
         }else{
