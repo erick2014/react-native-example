@@ -12,17 +12,51 @@ export default class Component2 extends Component {
   
   constructor(props){
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged:(r1,r2)=> r1!== r2 })
+    this.ds = new ListView.DataSource({rowHasChanged:(r1,r2)=> r1!== r2 })
     this.state={
-      dataSource:ds.cloneWithRows(users)
+      dataSource:this.ds
     }
     this.renderMyRow=this.renderMyRow.bind(this);
+    this.fetchUsers=this.fetchUsers.bind(this);
+  }
+
+  componentDidMount(){
+    this.fetchUsers()
+  }
+
+  fetchUsers(){
+    fetch("http://jsonplaceholder.typicode.com/posts")
+      //receive and parse the data 
+      .then( (resp)=>{
+        return resp.json();
+      })
+      //receive the data as json
+      .then( (resp)=>{
+        
+        if( resp instanceof Array && resp.length>0  ){
+          console.log("here...?",resp)
+          let newData=this.ds.cloneWithRows(resp)
+          this.setState({ dataSource: newData })
+        }else{
+          console.log("nope..")
+        }
+      })  
+      .catch( (resp)=>{
+        console.error("something were wrong..")
+      })
   }
   
   renderMyRow(rowData){
+    console.log("calling render my row..",rowData)
+    let title=( rowData.title )? rowData.title : '';
+   
+    if( title.length > 20){
+      title=title.substr(0,20)
+    }
+
     return(
       <View>
-        <Text>{rowData.name}</Text> 
+        <Text>Post:{ rowData.id } {title}</Text> 
       </View>
     )
   }
