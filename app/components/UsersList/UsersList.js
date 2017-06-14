@@ -8,7 +8,7 @@ const users=[
   { name:"Janet William" }
 ]
 
-export default class Component2 extends Component {
+export default class UsersList extends Component {
   
   constructor(props){
     super(props);
@@ -25,7 +25,7 @@ export default class Component2 extends Component {
   }
 
   fetchUsers(){
-    fetch("http://jsonplaceholder.typicode.com/posts")
+    fetch("http://jsonplaceholder.typicode.com/users")
       //receive and parse the data 
       .then( (resp)=>{
         return resp.json();
@@ -46,16 +46,9 @@ export default class Component2 extends Component {
   }
   
   renderMyRow(rowData){
-    console.log("calling render my row..",rowData)
-    let title=( rowData.title )? rowData.title : '';
-   
-    if( title.length > 20){
-      title=title.substr(0,20)
-    }
-
     return(
       <View>
-        <Text>Post:{ rowData.id } {title}</Text> 
+        <Text> {rowData.name }: {rowData.email}</Text> 
       </View>
     )
   }

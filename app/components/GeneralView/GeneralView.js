@@ -1,7 +1,9 @@
+/*React stuff here*/
 import React, { Component } from 'react';
+/*React native here*/
 import {AppRegistry,Text,View,StyleSheet,TextInput } from 'react-native';
 
-import Component2 from '../Component2/Component2';
+import UsersList from '../UsersList/UsersList';
 
 const users=[
   { name:"John Doe" },
@@ -10,7 +12,7 @@ const users=[
   { name:"Janet William" }
 ]
 
-export default class Component1 extends Component {
+export default class GeneralView extends Component {
   constructor(props){
     super(props);
     this.state={
@@ -23,7 +25,7 @@ export default class Component1 extends Component {
     let name= this.state.showName ? this.state.name: 'No name';
     return(
       <View>
-        <Text style={styles.myView}>{this.state.message}deded</Text>
+        <Text style={styles.myView}>{this.state.message}</Text>
 
         <View style={styles.container}>
           <View style={styles.box}>
@@ -44,7 +46,7 @@ export default class Component1 extends Component {
         </View>
 
         <View style={styles.inputBox}>
-          <Component2 />
+          <UsersList />
         </View>
           
       </View>
