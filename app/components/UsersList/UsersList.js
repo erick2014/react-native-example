@@ -45,14 +45,14 @@ export default class UsersList extends Component {
       })
   }
 
-  _onClickUserFromList(){
-    this.props.navigate("UserDetails");
+  _onClickUserFromList(user){
+    this.props.navigate("UserDetails",{ user:user });
   }
   
   renderMyRow(rowData){
     return(
       <View style={{margin:10}}>
-        <TouchableHighlight onPress={this._onClickUserFromList}>
+        <TouchableHighlight onPress={ ()=>{ this._onClickUserFromList(rowData) } }>
           <Text> {rowData.name }: {rowData.email}</Text> 
         </TouchableHighlight>
       </View>

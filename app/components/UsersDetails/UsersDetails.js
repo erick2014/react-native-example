@@ -8,9 +8,12 @@ export default class UsersDetails extends Component {
   }
 
   render(){
+    const { params } = this.props.navigation.state;
     return(
       <View>
-        <Text>Details for the user</Text>
+        <Text>Name: {params.user.name}</Text>
+        <Text>Email: {params.user.email}</Text>
+        <Text>Address: {params.user.address.street}</Text>
       </View>
     );
   }
