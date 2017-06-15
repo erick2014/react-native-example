@@ -22,6 +22,8 @@ export default class GeneralView extends Component {
     }
   }
   render(){
+    console.log("this props app..",this.props)
+    const { navigate }=this.props.navigation;
     let name= this.state.showName ? this.state.name: 'No name';
     return(
       <View>
@@ -46,7 +48,7 @@ export default class GeneralView extends Component {
         </View>
 
         <View style={styles.inputBox}>
-          <UsersList />
+          <UsersList navigate={navigate} />
         </View>
           
       </View>

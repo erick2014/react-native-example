@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {AppRegistry,Text,View,StyleSheet,ListView } from 'react-native';
+import {AppRegistry,Text,View,StyleSheet,ListView,TouchableHighlight } from 'react-native';
 
 const users=[
   { name: "John Doe" },
@@ -18,6 +18,7 @@ export default class UsersList extends Component {
     }
     this.renderMyRow=this.renderMyRow.bind(this);
     this.fetchUsers=this.fetchUsers.bind(this);
+    this._onClickUserFromList=this._onClickUserFromList.bind(this);
   }
 
   componentDidMount(){
@@ -32,7 +33,6 @@ export default class UsersList extends Component {
       })
       //receive the data as json
       .then( (resp)=>{
-        
         if( resp instanceof Array && resp.length>0  ){
           let newData=this.ds.cloneWithRows(resp)
           this.setState({ dataSource: newData })
@@ -41,14 +41,20 @@ export default class UsersList extends Component {
         }
       })  
       .catch( (resp)=>{
-        console.error("something were wrong..")
+        console.log("something were wrong, check your connection or something")
       })
+  }
+
+  _onClickUserFromList(){
+    this.props.navigate("UserDetails");
   }
   
   renderMyRow(rowData){
     return(
-      <View>
-        <Text> {rowData.name }: {rowData.email}</Text> 
+      <View style={{margin:10}}>
+        <TouchableHighlight onPress={this._onClickUserFromList}>
+          <Text> {rowData.name }: {rowData.email}</Text> 
+        </TouchableHighlight>
       </View>
     )
   }

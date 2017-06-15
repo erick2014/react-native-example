@@ -10,7 +10,7 @@ export default class UsersDetails extends Component {
   render(){
     return(
       <View>
-        <Text>Details</Text>
+        <Text>Details for the user</Text>
       </View>
     );
   }
