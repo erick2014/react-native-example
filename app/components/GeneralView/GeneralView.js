@@ -5,13 +5,6 @@ import {AppRegistry,Text,View,StyleSheet,TextInput } from 'react-native';
 
 import UsersList from '../UsersList/UsersList';
 
-const users=[
-  { name:"John Doe" },
-  { name:"Brad Traversy" },
-  { name:"Steve Smith" },
-  { name:"Janet William" }
-]
-
 export default class GeneralView extends Component {
   constructor(props){
     super(props);
@@ -22,7 +15,6 @@ export default class GeneralView extends Component {
     }
   }
   render(){
-    console.log("this props app..",this.props)
     const { navigate }=this.props.navigation;
     let name= this.state.showName ? this.state.name: 'No name';
     return(
