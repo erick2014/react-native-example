@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import {AppRegistry,Text,View,StyleSheet,ListView,TouchableHighlight } from 'react-native';
 
-const users=[
-  { name: "John Doe" },
-  { name:"Brad Traversy" },
-  { name:"Steve Smith" },
-  { name:"Janet William" }
-]
-
 export default class UsersList extends Component {
   
   constructor(props){
@@ -22,7 +15,7 @@ export default class UsersList extends Component {
   }
 
   componentDidMount(){
-    this.fetchUsers()
+    //this.fetchUsers()
   }
 
   fetchUsers(){
