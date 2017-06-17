@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {AppRegistry,Text,View,StyleSheet,ListView,TouchableHighlight } from 'react-native';
 
-export default class UsersList extends Component {
+class UsersList extends Component {
   
   constructor(props){
     super(props);
@@ -69,4 +69,6 @@ const styles= StyleSheet.create({
   boxSpaces:{ marginTop:10,marginBottom:10 }
 })
 
-AppRegistry.registerComponent('Component2', () => Component2);
+export default UsersList;
+
+AppRegistry.registerComponent('UsersList', () => UsersList);
