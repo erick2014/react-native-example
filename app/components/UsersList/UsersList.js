@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {AppRegistry,Text,View,StyleSheet,ListView,TouchableHighlight } from 'react-native';
+import { gql,graphql } from 'react-apollo';
 
 class UsersList extends Component {
   
@@ -46,20 +47,27 @@ class UsersList extends Component {
     return(
       <View style={{margin:10}}>
         <TouchableHighlight onPress={ ()=>{ this._onClickUserFromList(rowData) } }>
-          <Text> {rowData.name }: {rowData.email}</Text> 
+          <Text> {rowData.firstName }: {rowData.email}</Text> 
         </TouchableHighlight>
       </View>
     )
   }
 
   render(){
+    let Component=""
+    const { getUsers }=this.props.data;
+    let usersList=this.ds;
+
+    if( getUsers && getUsers instanceof Array ){
+      usersList= this.ds.cloneWithRows(getUsers)
+    }
+
     return(
       <View>
         <Text style={styles.boxSpaces}>Users List :</Text>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={ (rowData)=> this.renderMyRow( rowData )  }
-        />
+        {
+         getUsers && getUsers instanceof Array ? <ListView dataSource={ usersList } renderRow={(rowData)=> this.renderMyRow( rowData )}/>: null  
+        }
       </View>
     );
   }
@@ -69,6 +77,16 @@ const styles= StyleSheet.create({
   boxSpaces:{ marginTop:10,marginBottom:10 }
 })
 
-export default UsersList;
+const usersListWithData = graphql(gql`
+  query {
+    getUsers{
+      firstName
+      lastName
+      id
+      email
+    }
+  }`, { options: { notifyOnNetworkStatusChange: true } })(UsersList);
 
-AppRegistry.registerComponent('UsersList', () => UsersList);
+export default usersListWithData;
+
+AppRegistry.registerComponent('UsersList', () => usersListWithData);
