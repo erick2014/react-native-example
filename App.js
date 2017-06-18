@@ -21,37 +21,12 @@ const apolloClient = new ApolloClient({
   }),
 });
 
-const FeedWithData = graphql(gql`
-  query {
-    getUsers{
-      firstName
-      lastName
-      id
-      email
-    }
-  }`, { options: { notifyOnNetworkStatusChange: true } })(Feed);
-
-function Feed({data}){
-  const { getUsers }=data; 
-  let myText="";
-
-  if( getUsers instanceof Array && getUsers.length>0 ){
-    myText=getUsers[0]["firstName"];
-  }
-  
-  return(
-    <View>
-      <Text>Hello {myText}</Text>
-    </View>
-  )
-}
-
 class HomeScreen extends Component {
   static navigationOptions = { title: 'Welcome'};
   render() {
     return(
       <ApolloProvider client={apolloClient}>
-        <FeedWithData />
+        <GeneralView message="hello motto" {...this.props} />
       </ApolloProvider>
     )
   }
